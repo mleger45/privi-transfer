@@ -1,0 +1,13 @@
+.loginForm__container {
+    margin-top: 15px;
+}
+
+.login-container {
+    border: 1px solid black;
+}
+
+.loginForm__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
