@@ -3,9 +3,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Link, useHistory } from "react-router-dom";
-import FacebookLogin from 'react-facebook-login';
-import GoogleLogin from 'react-google-login';
-import FacebookIcon from '@material-ui/icons/Facebook';
+import FacebookLogin from "react-facebook-login";
+import GoogleLogin from "react-google-login";
+import FacebookIcon from "@material-ui/icons/Facebook";
 
 import "./LoginForm.css";
 
@@ -25,16 +25,13 @@ function LoginForm() {
   const responseFacebook = (response) => {
     //post to some database, redirect to dashboard
     console.log(response);
-    history.push('/dashboard');
-
-  }
+    history.push("/dashboard");
+  };
 
   const responseGoogle = (response) => {
     console.log("received", response);
-    history.push('/dashboard');
-  }
-
-  
+    history.push("/dashboard");
+  };
 
   return (
     <React.Fragment>
@@ -61,30 +58,28 @@ function LoginForm() {
       </form>
       <p>O inicia sesión con </p>
       <div className="login__social">
-      <FacebookLogin
-    appId="756375151900873"
-    autoLoad={false}
-    fields="name,email,picture"
-    textButton=""
-    callback={responseFacebook}
-    cssClass="buttonConfig"
-    icon = {<FacebookIcon color="primary" />}
-    />
-    <span>
-    <GoogleLogin
-    clientId="235276926354-lmafu50sg1fs3o1tneqg3agqeokcs906.apps.googleusercontent.com"
-    buttonText=""
-    onSuccess={responseGoogle}
-    onFailure={responseGoogle}
-    cookiePolicy={'single_host_origin'}
-    className="buttonConfig"
-    icon={true} />
-  </span>
-        
-    
+        <FacebookLogin
+          appId="756375151900873"
+          autoLoad={false}
+          fields="name,email,picture"
+          textButton=""
+          callback={responseFacebook}
+          cssClass="buttonConfig"
+          icon={<FacebookIcon color="primary" />}
+        />
+        <span>
+          <GoogleLogin
+            clientId="235276926354-lmafu50sg1fs3o1tneqg3agqeokcs906.apps.googleusercontent.com"
+            buttonText=""
+            onSuccess={responseGoogle}
+            onFailure={responseGoogle}
+            cookiePolicy={"single_host_origin"}
+            className="buttonConfig"
+            icon={true}
+          />
+        </span>
       </div>
     </React.Fragment>
-
   );
 }
 
