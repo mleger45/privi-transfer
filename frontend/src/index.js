@@ -10,6 +10,7 @@ import {
 } from "react-router-dom";
 import Login from './components/Login';
 import Register from './components/Register';
+import Dashboard from './components/Dashboard';
 import ButtonAppBar from './components/AppBar';
 
 
@@ -22,6 +23,7 @@ ReactDOM.render(
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
         <Route path="/forgot-password" component={App} />
+        <Route path="/dashboard" component={Dashboard} />
         <Route exact path="/" component={App} />
       </Switch>
     </Router>
