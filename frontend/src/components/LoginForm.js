@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 function LoginForm() {
   const classes = useStyles();
   const history = useHistory();
-  const [user, setUser] = useContext(UserContext);
+  const [setUser] = useContext(UserContext);
 
   const responseGoogleFailure = (response) => {
     console.log("Error with google authentication")
