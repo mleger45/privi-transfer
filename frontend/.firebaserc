@@ -1,5 +1,5 @@
 {
   "projects": {
-    "default": "privi-transfer"
+    "default": "privi-transfer/frontend"
   }
 }
