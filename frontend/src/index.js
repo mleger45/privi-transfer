@@ -8,12 +8,12 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import ButtonAppBar from "./components/AppBar";
-import { UserContext } from "./contexts/user-context";
+import { UserContext, UserProvider } from "./contexts/user-context";
 
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserContext.Provider>
+    <UserProvider>
       <Router>
         <ButtonAppBar />
         <Switch>
@@ -24,7 +24,7 @@ ReactDOM.render(
           <Route exact path="/" component={App} />
         </Switch>
       </Router>
-    </UserContext.Provider >
+    </UserProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

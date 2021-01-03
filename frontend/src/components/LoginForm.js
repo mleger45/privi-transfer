@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useContext} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
@@ -6,6 +6,9 @@ import { Link, useHistory } from "react-router-dom";
 import FacebookLogin from "react-facebook-login";
 import GoogleLogin from "react-google-login";
 import FacebookIcon from "@material-ui/icons/Facebook";
+import User from '../domains/user';
+import { UserContext } from "../contexts/user-context";
+
 
 import "./LoginForm.css";
 
@@ -21,15 +24,16 @@ const useStyles = makeStyles((theme) => ({
 function LoginForm() {
   const classes = useStyles();
   const history = useHistory();
+  const [user, setUser] = useContext(UserContext);
 
-  const responseFacebook = (response) => {
-    //post to some database, redirect to dashboard
-    console.log(response);
-    history.push("/dashboard");
+  const responseGoogleFailure = (response) => {
+    console.log("Error with google authentication")
   };
 
-  const responseGoogle = (response) => {
-    console.log("received", response);
+const responseHandler= (response) => {
+    console.log("🧖", response);
+    const userObj = User.createUser(response);
+    setUser({userObj, isLoggedIn: true})
     history.push("/dashboard");
   };
 
@@ -63,7 +67,7 @@ function LoginForm() {
           autoLoad={false}
           fields="name,email,picture"
           textButton=""
-          callback={responseFacebook}
+          callback={responseHandler}
           cssClass="buttonConfig"
           icon={<FacebookIcon color="primary" />}
         />
@@ -71,8 +75,8 @@ function LoginForm() {
           <GoogleLogin
             clientId="235276926354-lmafu50sg1fs3o1tneqg3agqeokcs906.apps.googleusercontent.com"
             buttonText=""
-            onSuccess={responseGoogle}
-            onFailure={responseGoogle}
+            onSuccess={responseHandler}
+            onFailure={responseGoogleFailure}
             cookiePolicy={"single_host_origin"}
             className="buttonConfig"
             icon={true}
