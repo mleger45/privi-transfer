@@ -8,23 +8,34 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import ButtonAppBar from "./components/AppBar";
-import { UserContext, UserProvider } from "./contexts/user-context";
-
+import PaymentWorkflow from "./components/PaymentWorkflow";
+import { UserProvider } from "./contexts/user-context";
+import About from "./components/About";
 
 ReactDOM.render(
   <React.StrictMode>
-    <UserProvider>
-      <Router>
+    <Router>
+      <UserProvider>
         <ButtonAppBar />
-        <Switch>
-          <Route path="/login" component={Login} />
-          <Route path="/register" component={Register} />
-          <Route path="/forgot-password" component={App} />
-          <Route path="/dashboard" component={Dashboard} />
-          <Route exact path="/" component={App} />
-        </Switch>
-      </Router>
-    </UserProvider>
+      </UserProvider>
+      <Switch>
+        <Route path="/login">
+          <UserProvider>
+            <Login />
+          </UserProvider>
+        </Route>
+        <Route path="/about" component={About} />
+        <Route path="/register" component={Register} />
+        <Route path="/forgot-password" component={App} />
+        <Route path="/send" component={PaymentWorkflow} />
+        <Route path="/dashboard">
+          <UserProvider>
+            <Dashboard />
+          </UserProvider>
+        </Route>
+        <Route exact path="/" component={App} />
+      </Switch>
+    </Router>
   </React.StrictMode>,
   document.getElementById("root")
 );

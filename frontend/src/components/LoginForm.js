@@ -25,6 +25,7 @@ function LoginForm() {
   const classes = useStyles();
   const history = useHistory();
   const [user, setUser] = useContext(UserContext);
+  console.log(user);
 
   const responseGoogleFailure = (response) => {
     console.log("Error with google authentication")
@@ -33,7 +34,7 @@ function LoginForm() {
 const responseHandler= (response) => {
     console.log("🧖", response);
     const userObj = User.createUser(response);
-    setUser({userObj, isLoggedIn: true})
+    setUser({userObj, isLogged: true})
     history.push("/dashboard");
   };
 

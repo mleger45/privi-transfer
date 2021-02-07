@@ -23,7 +23,7 @@ class User {
         }else if(httpResponse.hasOwnProperty('graphDomain') && httpResponse.graphDomain === 'facebook'){
             return new FacebookUser(httpResponse);
         }else{
-            return PriviUser(httpResponse);
+            return new PriviUser(httpResponse);
         }
 
     }
