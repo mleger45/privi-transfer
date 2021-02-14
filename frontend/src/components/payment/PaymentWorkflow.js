@@ -5,6 +5,10 @@ import Step from '@material-ui/core/Step';
 import StepLabel from '@material-ui/core/StepLabel';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import QuantityStep from './QuantityStep';
+import TargetUserStep from './TargetUserStep';
+import SummaryStep from './SummaryStep';
+import ConfirmationStep from './ConfirmationStep';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -22,19 +26,19 @@ const useStyles = makeStyles((theme) => ({
 
 
   function getSteps() {
-    return ['Calculo de transferencia', 'Datos de destinatario', 'Resumen', 'Confirmacion'];
+    return ['Cantidad', 'Destinatario', 'Comprobar', 'Confirmacion'];
   }
   
   function getStepContent(step) {
     switch (step) {
       case 0:
-        return 'Calculo de transferencia';
+        return <QuantityStep />;
       case 1:
-        return 'Datos de destinatario';
+        return <TargetUserStep/>;
       case 2:
-        return 'Resumen';
+        return <SummaryStep/>;
       case 3:
-        return 'Confirmacion';
+        return <ConfirmationStep />;
       default:
         return 'Incorrecto!';
     }
@@ -48,7 +52,7 @@ const useStyles = makeStyles((theme) => ({
     const steps = getSteps();
   
     const isStepOptional = (step) => {
-      return step === 0;
+      return step === -1;
     };
   
     const isStepSkipped = (step) => {

@@ -8,7 +8,7 @@ import Login from "./components/Login";
 import Register from "./components/Register";
 import Dashboard from "./components/Dashboard";
 import ButtonAppBar from "./components/AppBar";
-import PaymentWorkflow from "./components/PaymentWorkflow";
+import PaymentWorkflow from "./components/payment/PaymentWorkflow";
 import { UserProvider } from "./contexts/user-context";
 import About from "./components/About";
 
